@@ -35,8 +35,8 @@ NUM_ADD = 300
 NUM_REMOVE = 100
 
 SLEEP_TIME = 10
-ADD_SLEEP_T = 5
-REMOVE_SLEEP_T = 5
+ADD_SLEEP_T = 2
+REMOVE_SLEEP_T = 2
 #multicastGroup = map(lambda x: 'h'+ str(x),  random.sample(range(LOW, HIGH), NUM_ADD))
 #multicastLeave = map(lambda x: multicastGroup[x], random.sample(range(NUM_ADD), NUM_REMOVE))
 #multicastGroup = []
@@ -122,6 +122,6 @@ def myNet():
     net.stop()
 
 if __name__ == '__main__':
-    setLogLevel( 'info' )
+    setLogLevel( 'warning' )
     myNet()
 
