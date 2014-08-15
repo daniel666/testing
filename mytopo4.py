@@ -15,7 +15,20 @@ import os
 import random
 import sys
 
+class Poisson:
+    """Generate Poisson(lambda) values by using exponential
+    random variables."""
 
+    def __init__(self, lam):
+        self.__lam = lam
+
+    def nextPoisson(self):
+        sum = 0
+        n = -1
+        while sum < self.__lam:
+            n += 1
+            sum -= math.log(random.random())
+        return n
 
 class MyTopo( Topo ):
     "Simple topology example."
@@ -100,18 +113,18 @@ CONTROLLERS = { 'ref': Controller,
                 'nox': NOX,
                 'remote': RemoteController,
                 'none': lambda name: None }
-ADD_SLEEP_T = 5
-REMOVE_SLEEP_T = 5
-multicastGroup = ['h1','h3','h6','h5', 'h10']
-#for i in range(1,13):
-    #multicastGroup.append('h'+ str(i))
-multicastLeave = []
+ADD_SLEEP_T = 2
+REMOVE_SLEEP_T = 2
+#multicastGroup = ['h1','h2','h3','h4', 'h5','h6','h7','h8','h9','h10','h11','h12']
+##for i in range(1,13):
+    ##multicastGroup.append('h'+ str(i))
+#multicastLeave = ['h2','h3','h4', 'h5','h6','h7','h8','h9','h10','h11','h12']
 
 #print "multicastGroup", multicastGroup
 #print "multicastLeave", multicastLeave
 
-operations=[1,1,1,1,1,1,1, -1]
-operationNodes=['h1','h4','h5','h8','h9','h10','h12', 'h4']
+operations=[1,1,1,1,1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+operationNodes=['h1','h2','h3','h4', 'h5','h6','h7','h8','h9','h10','h11','h12','h2','h3','h4', 'h5','h6','h7','h8','h9','h10','h11','h12']
 
 setLogLevel( 'info' )
 topo = MyTopo()
